@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Profile Getter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div id="main" class="active fade-in">
+        <div class="main">
+          <div class="main-txt">
+            <h1>Github Profile Viewer</h1>
+          </div>
+          <div>
+            <input type="text" placeholder="enter username" id="input" />
+            <p id="error1" class="error hidden2">*User not found</p>
+          </div>
+          <button id="button">Get Profile</button>
+        </div>
+      </div>
+      <div id="main2" class="hidden fade-out">
+        <div class="top">
+          <div class="main-txt2">
+            <h1>Github Profile Viewer</h1>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="enter username"
+              id="input2"
+              value=""
+            />
+            <p id="error2" class="hidden2">*User not found</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="" alt="" id="profile-pic" />
+          <div>
+            <p id="name"></p>
+            <a href="" id="username-url"><p id="username"></p></a>
+            <p id="bio"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
