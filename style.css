@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f5f5f5;
+}
+a {
+  text-decoration: none;
+}
+.main {
+  margin: 10vw 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-txt {
+  font-size: 2.5rem;
+  margin-bottom: 3vw;
+  color: rgba(0, 77, 77, 1);
+  text-shadow: 3px 3px rgba(0, 128, 128, 0.406);
+  text-align: center;
+}
+#input {
+  width: 20rem;
+  padding: 1vw 58px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  background: left no-repeat url("img/search.jpg");
+  background-size: 55px;
+}
+#button {
+  margin-top: 3rem;
+  padding: 1vw 2vw;
+  width: 15rem;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  background-color: rgba(0, 77, 77, 1);
+  color: white;
+  cursor: pointer;
+}
+.top {
+  margin: 10vw 20vw 2vw;
+  display: flex;
+  flex-direction: row;
+}
+.main-txt2 {
+  font-size: 1rem;
+  margin-bottom: 3vw;
+  color: rgba(0, 77, 77, 1);
+  text-shadow: 1.5px 1.5px rgba(0, 128, 128, 0.406);
+  text-align: center;
+}
+#input2 {
+  width: 40vw;
+  padding: 0.5vw 58px;
+  margin-left: 3rem;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  background: left no-repeat url("img/search.jpg");
+  background-size: 55px;
+}
+.card {
+  margin: 0vw 20vw;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 128, 128, 0.406);
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(64, 192, 192, 0.406);
+}
+#profile-pic {
+  border-radius: 50%;
+  margin: 2vw;
+  width: 20vw;
+}
+#name {
+  font-size: 3rem;
+  margin: 2vw 2vw 0 2vw;
+  color: rgba(0, 64, 64, 0.925);
+}
+#username {
+  font-size: 1.5rem;
+  margin: 0.5vw 2vw;
+  color: rgba(128, 128, 128, 0.829);
+}
+#username::before {
+  content: "@";
+}
+#bio {
+  font-size: 1.5rem;
+  margin: 2vw;
+  color: rgba(0, 128, 128, 0.906);
+}
+#error1 {
+  color: red;
+  font-size: 1rem;
+  margin: 1rem 0 0 6rem;
+}
+#error2 {
+  color: red;
+  font-size: 1rem;
+  margin-left: 8vw;
+}
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+.hidden2 {
+  opacity: 0;
+}
+.active {
+  display: block;
+}
+@media screen and (max-width: 870px) {
+  #name {
+    font-size: 2rem;
+  }
+  #username {
+    font-size: 1rem;
+  }
+  #bio {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 670px) {
+  #main2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #name {
+    font-size: 1.5rem;
+  }
+  #username {
+    font-size: 0.9rem;
+  }
+  #bio {
+    font-size: 0.9rem;
+  }
+  .top{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #input2 {
+    width: 18rem;
+    margin: 2rem 0 0 0;
+  }
+  .card {
+    margin: 5rem 0.5rem 0.5rem 0.5rem;
+  }
+  #profile-pic {
+    width: 7rem;
+  }
+}
