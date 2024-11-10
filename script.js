@@ -28,8 +28,8 @@ function toggleFade() {
   setTimeout(() => {
     element1.classList.toggle("hidden");
     element2.classList.toggle("hidden");
-    element1.classList.toggle("active");
-    element2.classList.toggle("active");
+    // element1.classList.toggle("active");
+    // element2.classList.toggle("active");
   }, 500);
 }
 
