@@ -63,10 +63,10 @@ async function setData(value, ele) {
   try {
     const response = await fetch(`https://api.github.com/users/${value}`);
     if (!response.ok) {
-      ele.classList.toggle("hidden2");
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      ele.classList.remove("hidden2");
     } else {
       const data = await response.json();
+      ele.classList.add("hidden2");
       name1.innerHTML = data.name;
       usernamename.innerHTML = data.login;
       bio.innerHTML = data.bio;
@@ -76,7 +76,7 @@ async function setData(value, ele) {
       if (ele === error1) toggleFade();
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error: ", error);
   }
 }
 
