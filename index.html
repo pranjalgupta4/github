@@ -3,48 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Github Profile Getter</title>
+    <title>GitGram</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <div id="main" class="active fade-in">
-        <div class="main">
-          <div class="main-txt">
-            <h1>Github Profile View</h1>
-          </div>
+      <header>
+        <h3>GitGram</h3>
+        <p>Discover GitHub Profiles Instantly</p>
+        <img src="img/search2.png" class="hidden" id="header-icon" alt="" />
+      </header>
+      <div class="main">
+        <div id="profile-onsearch" class="hidden">
+          <img src="" id="onsearch-pic" alt="" />
+          <h3 id="onsearch-name"></h3>
+          <a id="onsearch-username"></a>
+          <p id="onsearch-bio"></p>
+        </div>
+        <div class="search-profile" id="search-profile">
+          <img src="img/profile pic.png" alt="" />
           <div>
-            <input type="text" placeholder="enter username" id="input" />
-            <p id="error1" class="error hidden2">*User not found</p>
+            <input type="text" placeholder="Search Profile" id="input" />
+            <p class="error not-visible">*User not found</p>
           </div>
-          <button id="button">Get Profile</button>
+          <button id="button">Search</button>
         </div>
       </div>
-      <div id="main2" class="hidden fade-out">
-        <div class="top">
-          <div class="main-txt2">
-            <h1>Github Profile Viewer</h1>
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="enter username"
-              id="input2"
-              value=""
-            />
-            <p id="error2" class="hidden2">*User not found</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="" alt="" id="profile-pic" />
-          <div>
-            <p id="name"></p>
-            <a href="" id="username-url"><p id="username"></p></a>
-            <p id="bio"></p>
-          </div>
-        </div>
+      <img id="history-icon" src="img/history.png" alt="" />
+      <div id="history" class="hidden history-hidden">
+        <h3>History <img src="img/cancel.png" alt="" id="close-history" /></h3>
+        <ul id="history-list"></ul>
+        <p id="clear-all">Clear All</p>
       </div>
     </main>
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
