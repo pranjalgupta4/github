@@ -82,7 +82,7 @@ function removeHistory() {
   setTimeout(() => {
     history.classList.remove("history");
     history.classList.add("hidden");
-  }, 500);
+  }, 301);
 }
 
 // ||Adding username to history
@@ -92,7 +92,7 @@ for (let i = 1; i < cardCollection.length + 1; i++) {
                   <img src="img/cancel.png" alt="" id="liImg${i}" />`;
   let listItemDiv = document.createElement("li");
   listItemDiv.innerHTML = listItem;
-  listItem.id = `li${i}`;
+  listItemDiv.id = `li${i}`;
   historyList.appendChild(listItemDiv);
   addListenerToListItem(i);
 }
@@ -226,7 +226,7 @@ function step1(i) {
     varCard.classList.remove("profile2");
     varCard.classList.remove("expand-half");
     varCard.classList.add("grid-position1");
-  }, 500);
+  }, 301);
   step2(i);
 }
 
@@ -238,7 +238,7 @@ function reverseStep1(i) {
     varCard.classList.remove("grid-position1");
     varCard.classList.add("profile2");
     varCard.classList.remove("colapse-left");
-  }, 500);
+  }, 301);
 }
 
 // Step 2
@@ -255,7 +255,7 @@ function step2(i) {
         varCard.classList.remove("profile");
         varCard.classList.remove("grid-position1");
         varCard.classList.add("profile-onsearch");
-      }, 500);
+      }, 301);
       if (i + 1 <= cardCollection.length) step1(i + 1);
       if (i - 1 > 0) step3(i - 1);
     },
@@ -275,7 +275,7 @@ function reverseStep2(i) {
     varCard.classList.add("profile");
     varCard.classList.add("grid-position1");
     varCard.classList.remove("profile-onsearch");
-  }, 500);
+  }, 301);
   step2(i);
   if (i + 1 <= cardCollection.length) reverseStep1(i + 1);
 }
@@ -292,7 +292,7 @@ function step3(i) {
     varCard.classList.remove("profile-onsearch");
     varCard.classList.add("profile");
     varCard.classList.add("grid-position2");
-  }, 500);
+  }, 301);
 
   if (i - 1 < cardCollection.length && i - 1 > 0) step4(i - 1);
 
@@ -307,7 +307,7 @@ function step3(i) {
         varCard.classList.add("profile-onsearch");
         varCard.classList.remove("profile");
         varCard.classList.remove("grid-position2");
-      }, 500);
+      }, 301);
       reverseStep2(i + 1);
       if (i - 1 < cardCollection.length && i - 1 > 0) reverseStep4(i - 1);
     },
@@ -324,7 +324,7 @@ function step4(i) {
     varCard.classList.remove("profile");
     varCard.classList.remove("grid-position2");
     varCard.classList.add("hidden");
-  }, 500);
+  }, 301);
 }
 
 // Step 4 reverse
@@ -340,7 +340,7 @@ function reverseStep4(i) {
     varCard.classList.remove("profile2-left");
     varCard.classList.remove("expand-half-left");
     varCard.classList.add("grid-position2");
-  }, 500);
+  }, 301);
 }
 
 // ||Function to remove search profile
@@ -353,7 +353,7 @@ function removeSearchProfile() {
     searchProfile.classList.add("search-profile");
     searchProfile.classList.remove("hidden");
     headerIcon.classList.remove("hidden");
-  }, 500);
+  }, 301);
 }
 
 function removeSearchProfile2() {
@@ -363,7 +363,7 @@ function removeSearchProfile2() {
     searchProfile.classList.remove("search-profile");
     searchProfile.classList.add("hidden");
     headerIcon.classList.remove("hidden");
-  }, 500);
+  }, 301);
 }
 
 // ||Function to add search profile
@@ -377,7 +377,7 @@ function addSearchProfile() {
   setTimeout(function () {
     profileOnsearch.classList.remove("profile-onsearch");
     profileOnsearch.classList.add("hidden");
-  }, 300);
+  }, 150);
 }
 
 // ||Data Match funtion
