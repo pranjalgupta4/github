@@ -1,11 +1,11 @@
 let main = document.querySelector(".main");
 
-// ||Removing data from local storage
+// ||Adding data to Array
+let cardCollection = new Array();
 let allKeys = Object.keys(localStorage);
-const regex = /^entry\d+$/;
 for (let i = 1; i < localStorage.length + 1; i++) {
-  if (!regex.test(allKeys[i - 1])) {
-    localStorage.removeItem(allKeys[i - 1]);
+  if (/^entry\d+$/.test(allKeys[i - 1])) {
+    cardCollection.push(JSON.parse(localStorage.getItem(allKeys[i - 1])));
   }
 }
 
@@ -28,7 +28,8 @@ function ifNull(entry) {
 }
 
 // ||Adding cards to main
-for (let i = 1; i < localStorage.length + 1; i++) {
+
+for (let i = 1; i < cardCollection.length + 1; i++) {
   let dataset = JSON.parse(localStorage.getItem(`entry${i}`));
   let card = `<div class="profile profile2" id="card${i}">
                 <img src="${dataset.avatar_url}" alt="" />
@@ -67,6 +68,7 @@ document.getElementById("history-icon").addEventListener("click", function () {
 
 document.getElementById("clear-all").addEventListener("click", function () {
   localStorage.clear();
+  cardCollection = [];
   location.reload();
 });
 
@@ -84,7 +86,7 @@ function removeHistory() {
 }
 
 // ||Adding username to history
-for (let i = 1; i < localStorage.length + 1; i++) {
+for (let i = 1; i < cardCollection.length + 1; i++) {
   let dataset = JSON.parse(localStorage.getItem(`entry${i}`));
   let listItem = `<a href="${dataset.html_url}" target="_blank">@${dataset.login}</a>
                   <img src="img/cancel.png" alt="" id="liImg${i}" />`;
@@ -100,7 +102,8 @@ function addListenerToListItem(i) {
   document.getElementById(`liImg${i}`).addEventListener("click", function () {
     ind = parseInt(this.id.match(/\d+/)[0], 10);
     localStorage.removeItem(`entry${ind}`);
-    for (let j = ind; j < localStorage.length + 1; j++) {
+    cardCollection.splice(ind - 1, 1);
+    for (let j = ind; j < cardCollection.length + 1; j++) {
       let data = localStorage.getItem(`entry${j + 1}`);
       localStorage.setItem(`entry${j}`, data);
       localStorage.removeItem(`entry${j + 1}`);
@@ -133,11 +136,12 @@ async function setData(value) {
       onsearchBio.innerHTML = data.bio;
       onsearchPic.setAttribute("src", data.avatar_url);
 
-      let index = localStorage.length + 1;
+      let index = cardCollection.length + 1;
       ifMatchData(
         data.login,
         function () {
           localStorage.setItem(`entry${index}`, JSON.stringify(data));
+          cardCollection.push(data);
         },
         async function () {
           let card = `<img src="${data.avatar_url}" alt="" />
@@ -188,7 +192,7 @@ headerIcon.addEventListener("click", function () {
 
 // ||Function to make it Default
 function makeDefault() {
-  for (i = 1; i < localStorage.length + 1; i++) {
+  for (i = 1; i < cardCollection.length + 1; i++) {
     let oldELe = document.getElementById(`card${i}`);
     let newEle = oldELe.cloneNode(true);
     oldELe.parentNode.replaceChild(newEle, oldELe);
@@ -199,7 +203,7 @@ function makeDefault() {
 
 // ||Function to add listener to the first card
 function addListenerToCard1() {
-  if (localStorage.length > 0) {
+  if (cardCollection.length > 0) {
     document.getElementById("card1").addEventListener("click", function () {
       removeSearchProfile2();
       profileOnsearch.classList.remove("profile-onsearch");
@@ -252,7 +256,7 @@ function step2(i) {
         varCard.classList.remove("grid-position1");
         varCard.classList.add("profile-onsearch");
       }, 500);
-      if (i + 1 <= localStorage.length) step1(i + 1);
+      if (i + 1 <= cardCollection.length) step1(i + 1);
       if (i - 1 > 0) step3(i - 1);
     },
     { once: true }
@@ -273,7 +277,7 @@ function reverseStep2(i) {
     varCard.classList.remove("profile-onsearch");
   }, 500);
   step2(i);
-  if (i + 1 <= localStorage.length) reverseStep1(i + 1);
+  if (i + 1 <= cardCollection.length) reverseStep1(i + 1);
 }
 
 // Step 3
@@ -290,7 +294,7 @@ function step3(i) {
     varCard.classList.add("grid-position2");
   }, 500);
 
-  if (i - 1 < localStorage.length && i - 1 > 0) step4(i - 1);
+  if (i - 1 < cardCollection.length && i - 1 > 0) step4(i - 1);
 
   varCard.addEventListener(
     "click",
@@ -305,7 +309,7 @@ function step3(i) {
         varCard.classList.remove("grid-position2");
       }, 500);
       reverseStep2(i + 1);
-      if (i - 1 < localStorage.length && i - 1 > 0) reverseStep4(i - 1);
+      if (i - 1 < cardCollection.length && i - 1 > 0) reverseStep4(i - 1);
     },
     { once: true }
   );
@@ -379,7 +383,7 @@ function addSearchProfile() {
 // ||Data Match funtion
 function ifMatchData(ele, doThis, doThis2) {
   let index = 0;
-  for (let i = 1; i < localStorage.length + 1; i++) {
+  for (let i = 1; i < cardCollection.length + 1; i++) {
     let data = JSON.parse(localStorage.getItem(`entry${i}`));
     if (data.login === ele) index++;
   }
