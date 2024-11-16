@@ -1,5 +1,14 @@
 let main = document.querySelector(".main");
 
+// ||Removing data from local storage
+let allKeys = Object.keys(localStorage);
+const regex = /^entry\d+$/;
+for (let i = 1; i < localStorage.length + 1; i++) {
+  if (!regex.test(allKeys[i - 1])) {
+    localStorage.removeItem(allKeys[i - 1]);
+  }
+}
+
 // ||Setting CSS variable values
 let width = window
   .getComputedStyle(document.getElementsByTagName("main")[0])
