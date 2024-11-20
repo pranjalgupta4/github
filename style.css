@@ -43,13 +43,13 @@ header {
   padding: 1rem;
 }
 header h3 {
-  grid-column: 3/7;
+  grid-column: 1/5;
   grid-row: 1/2;
   color: azure;
   font-size: 3.5rem;
 }
 header p {
-  grid-column: 7/13;
+  grid-column: 5/12;
   grid-row: 1/2;
   color: azure;
   align-self: end;
@@ -59,6 +59,7 @@ header p {
 header img {
   grid-column: 14/16;
   width: 50px;
+  aspect-ratio: 1;
   border-radius: 50%;
   align-self: center;
 }
@@ -353,7 +354,7 @@ header img {
     font-size: 4.9rem;
   }
   header p {
-    grid-column: 6/11;
+    grid-column: 4/10;
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
@@ -407,6 +408,9 @@ header img {
   #history ul li {
     font-size: 1.5rem;
   }
+  #history-icon{
+    width: 100px;
+  }
 }
 @media screen and (max-width: 1600px) and (min-width: 1441px) {
   main {
@@ -416,11 +420,14 @@ header img {
     height: 37rem;
   }
   header p{
-    grid-column: 6/11;
+    grid-column: 4/11;
     margin-left: 1rem;
   }
   .search-profile input {
     background-size: 8% 100%;
+  }
+  #history-icon{
+    width: 100px;
   }
 }
 @media screen and (max-width: 825px) {
@@ -552,7 +559,7 @@ header img {
     bottom: 0;
   }
   .history {
-    width: var(--width-main);
+    width: 100%;
     height: 100%;
   }
   #history p {

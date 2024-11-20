@@ -10,10 +10,6 @@ for (let i = 1; i < localStorage.length + 1; i++) {
 }
 
 // ||Setting CSS variable values
-let width = window
-  .getComputedStyle(document.getElementsByTagName("main")[0])
-  .width.match(/\d+/)[0];
-document.documentElement.style.setProperty("--width-main", `${width}px`);
 document.documentElement.style.setProperty(
   "--width",
   `${window.getComputedStyle(main).width.match(/\d+/)[0] / 17}px`
@@ -204,12 +200,14 @@ function makeDefault() {
 // ||Function to add listener to the first card
 function addListenerToCard1() {
   if (cardCollection.length > 0) {
-    document.getElementById("card1").addEventListener("click", function () {
-      removeSearchProfile2();
-      profileOnsearch.classList.remove("profile-onsearch");
-      profileOnsearch.classList.add("hidden");
-    });
-    step1(1);
+    document
+      .getElementById(`card${cardCollection.length}`)
+      .addEventListener("click", function () {
+        removeSearchProfile2();
+        profileOnsearch.classList.remove("profile-onsearch");
+        profileOnsearch.classList.add("hidden");
+      });
+    step1(cardCollection.length);
   }
 }
 addListenerToCard1();
@@ -256,8 +254,8 @@ function step2(i) {
         varCard.classList.remove("grid-position1");
         varCard.classList.add("profile-onsearch");
       }, 301);
-      if (i + 1 <= cardCollection.length) step1(i + 1);
-      if (i - 1 > 0) step3(i - 1);
+      if (i - 1 > 0) step1(i - 1);
+      if (i + 1 <= cardCollection.length) step3(i + 1);
     },
     { once: true }
   );
@@ -277,7 +275,7 @@ function reverseStep2(i) {
     varCard.classList.remove("profile-onsearch");
   }, 301);
   step2(i);
-  if (i + 1 <= cardCollection.length) reverseStep1(i + 1);
+  if (i - 1 > 0) reverseStep1(i - 1);
 }
 
 // Step 3
@@ -294,7 +292,7 @@ function step3(i) {
     varCard.classList.add("grid-position2");
   }, 301);
 
-  if (i - 1 < cardCollection.length && i - 1 > 0) step4(i - 1);
+  if (i + 1 <= cardCollection.length && i + 1 > 0) step4(i + 1);
 
   varCard.addEventListener(
     "click",
@@ -308,8 +306,8 @@ function step3(i) {
         varCard.classList.remove("profile");
         varCard.classList.remove("grid-position2");
       }, 301);
-      reverseStep2(i + 1);
-      if (i - 1 < cardCollection.length && i - 1 > 0) reverseStep4(i - 1);
+      reverseStep2(i - 1);
+      if (i + 1 <= cardCollection.length && i + 1 > 0) reverseStep4(i + 1);
     },
     { once: true }
   );
